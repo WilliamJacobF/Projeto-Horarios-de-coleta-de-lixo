@@ -1,19 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+    
+
 <head>
   <meta charset="UTF-8">
-  <title>Buscar Rua</title>
-  <style>
-  </style>
+  <title>coleta de lixo por rua</title>
+    <style>
+    
+    body {
+        background-color: aqua;
+    }
+    .divform {
+        background-color: rgb(17, 8, 178);
+    }
+    .divtitle {
+        color: rgb(255, 255, 255);
+    }
+    .divlabel {
+        color: rgb(255, 255, 255);
+    }
+    .resultado {
+        color: rgb(255, 255, 255);
+    }
+    
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  
 </head>
-<body>
-  <h1>Buscar Rua</h1>
+<body class="body">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 
+    <div class="divtitle position-absolute top-0 start-50 translate-middle-x">
+    <h1 class="fw-bold ">Horários de coleta de lixo</h1>
+    </div>
+
+  <div class="divform position-absolute top-50 start-50 translate-middle w-50 p-3 h-50 d-inline-block border border-dark rounded-4">
+    <div class="position-absolute top-50 start-50 translate-middle">
   <form id="formBusca">
-    <label for="nomeRua">Nome da Rua:</label>
-    <input type="text" id="nomeRua" required>
-    <button type="submit">Buscar</button>
+    <label class="divlabel" for="nomeRua">Digite o nome da Rua:</label><br>
+    <input type="text" id="nomeRua" placeholder="Rua..." required>
+    <button type="submit" class="btn btn-primary" >Buscar</button>
+    
   </form>
+
 
   <div class="resultado" id="resultado"></div>
 
@@ -38,6 +67,8 @@
           resultadoDiv.innerHTML = error.message;
         });
     });
-  </script>
+  </script>    
+  </div>
+</div>
 </body>
 </html>

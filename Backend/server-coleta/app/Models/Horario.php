@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Horario extends Model
+class horario extends Model
 {
     protected $fillable = [
         'nomeRua',
