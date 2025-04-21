@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coleta Horarios</title>
+  <meta charset="UTF-8">
+  <title>Buscar Rua</title>
+  <style>
+  </style>
 </head>
 <body>
-    <h1>depois eu mecho aqui</h1>
+  <h1>Buscar Rua</h1>
+
+  <form id="formBusca">
+    <label for="nomeRua">Nome da Rua:</label>
+    <input type="text" id="nomeRua" required>
+    <button type="submit">Buscar</button>
+  </form>
+
+  <div class="resultado" id="resultado"></div>
+
+  <script>
+    document.getElementById('formBusca').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const nome = document.getElementById('nomeRua').value;
+      const resultadoDiv = document.getElementById('resultado');
+
+      fetch(`http://localhost:8000/api/ruas/buscar/${encodeURIComponent(nome)}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Rua não encontrada');
+          }
+          return response.json();
+        })
+        .then(data => {
+          resultadoDiv.innerHTML = `Rua: ${data.nomeRua}<br>Horaio: ${data.horario}`;
+        })
+        .catch(error => {
+          resultadoDiv.innerHTML = error.message;
+        });
+    });
+  </script>
 </body>
 </html>

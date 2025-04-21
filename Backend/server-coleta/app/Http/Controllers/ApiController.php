@@ -8,7 +8,18 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
-    public function show($id){
-        return Horario::findOrFail($id);
+    public function index()
+    {
+        return Horario::all();
+    }
+
+    public function buscarPorNome($nome)
+    {
+        $rua = Horario::where('nomeRua', 'like', "%$nome%")->first();
+        if (!$rua) {
+            return response()->json(['mensagem' => 'Rua não encontrada'], 404);
+        }
+
+        return response()->json($rua);
     }
 }

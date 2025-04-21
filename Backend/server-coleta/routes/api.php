@@ -5,4 +5,5 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 
 
-Route::get('/horarios/{horario}', [ApiController::class, 'show']);
+Route::get('/ruas', [ApiController::class, 'index']);
+Route::get('/ruas/buscar/{nome}', [ApiController::class, 'buscarPorNome']);
