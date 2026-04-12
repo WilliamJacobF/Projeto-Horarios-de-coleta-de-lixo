@@ -1,82 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-    
-
-<head>
-  <meta charset="UTF-8">
-  <title>coleta de lixo por rua</title>
-  <link rel="icon" href="trash.svg" type="image/png">
+  <head>
+    <meta charset="UTF-8" />
+    <title>coleta de lixo por rua</title>
+    <link rel="icon" href="trash.svg" type="image/png" />
     <style>
-    .body {
-      background-color: rgb(0, 89, 255);
-      background-image: url("coleta.jpg");
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
-    .divform {
+      .body {
+        background-color: rgb(0, 89, 255);
+        background-image: url("coleta.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .divform {
         background-color: rgb(127, 239, 178);
-    }
-    .divtitle {
+      }
+      .divtitle {
         color: rgb(5, 49, 25);
-        font-family: 'Libre Baskerville', serif;
-  font-size: 32px;  
-  text-align: center;
-    }
-    .divlabel {
+        font-family: "Libre Baskerville", serif;
+        font-size: 32px;
+        text-align: center;
+      }
+      .divlabel {
         color: rgb(0, 0, 0);
-    }
-    .resultado {
+      }
+      .resultado {
         color: rgb(0, 0, 0);
-    }
-    
+      }
     </style>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-  
-</head>
-<body class="body">
-  
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="body">
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
 
     <div class="divtitle">
-    <h1 class="fw-bold ">Horários de coleta de lixo</h1>
+      <h1 class="fw-bold">Horários de coleta de lixo</h1>
     </div>
 
-  <div class="divform position-absolute top-50 start-50 translate-middle w-50 p-3 h-50 d-inline-block border border-dark rounded-4">
-    <div class="position-absolute top-50 start-50 translate-middle">
-  <form id="formBusca">
-    <label class="divlabel" for="nomeRua">Digite o nome da Rua:</label><br>
-    <input type="text" id="nomeRua" placeholder="Rua..." required>
-    <button type="submit" class="btn btn-primary" >Buscar</button>
-    
-  </form>
+    <div
+      class="divform position-absolute top-50 start-50 translate-middle w-50 p-3 h-50 d-inline-block border border-dark rounded-4"
+    >
+      <div class="position-absolute top-50 start-50 translate-middle">
+        <form id="formBusca">
+          <label class="divlabel" for="nomeRua">Digite o nome da Rua:</label
+          ><br />
+          <input type="text" id="nomeRua" placeholder="Rua..." required />
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
 
+        <div class="resultado" id="resultado"></div>
 
-  <div class="resultado" id="resultado"></div>
+        <script>
+          document
+            .getElementById("formBusca")
+            .addEventListener("submit", function (e) {
+              e.preventDefault();
 
-  <script>
-    document.getElementById('formBusca').addEventListener('submit', function (e) {
-      e.preventDefault();
+              const nome = document.getElementById("nomeRua").value;
+              const resultadoDiv = document.getElementById("resultado");
 
-      const nome = document.getElementById('nomeRua').value;
-      const resultadoDiv = document.getElementById('resultado');
-
-      fetch(`http://localhost:8000/api/ruas/buscar/${encodeURIComponent(nome)}`)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Rua não encontrada');
-          }
-          return response.json();
-        })
-        .then(data => {
-          resultadoDiv.innerHTML = `Rua: ${data.nomeRua}<br>Horaio: ${data.horario}`;
-        })
-        .catch(error => {
-          resultadoDiv.innerHTML = error.message;
-        });
-    });
-  </script>    
-  </div>
-</div>
-</body>
+              fetch(
+                `http://localhost:8000/api/ruas/buscar/${encodeURIComponent(nome)}`,
+              )
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error("Rua não encontrada");
+                  }
+                  return response.json();
+                })
+                .then((data) => {
+                  resultadoDiv.innerHTML = `Rua: ${data.nomeRua}<br>Horaio: ${data.horario}`;
+                })
+                .catch((error) => {
+                  resultadoDiv.innerHTML = error.message;
+                });
+            });
+        </script>
+      </div>
+    </div>
+  </body>
 </html>
