@@ -1,5 +1,10 @@
 # Projeto-Horarios-de-coleta-de-lixo
- Este é um sistema fullstack desenvolvido com **Laravel** no backend e **HTML/CSS/JavaScript** no frontend. Ele permite aos moradores consultar os **dias e horários da coleta de lixo** digitando o nome da rua em um formulário.
+ Projeto de extenção do curso de Engenharia de Software, este é um sistema fullstack desenvolvido com **Laravel** no backend e **HTML/CSS/JavaScript** no frontend. Ele permite aos moradores consultar os **dias e horários da coleta de lixo** digitando o nome da rua em um formulário.
+
+---
+
+## ❓ O que é um Projeto de Extenção
+- disciplina acadêmica que permite uma atuação junto à comunidade por meio da implementação de um projeto com foco em soluções coletivas e que traga melhorias para um grupo de pessoas daquela localidade.
 
 ---
 
