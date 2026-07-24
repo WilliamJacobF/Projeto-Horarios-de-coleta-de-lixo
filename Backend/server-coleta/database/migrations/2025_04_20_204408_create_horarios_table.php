@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('horarios', function (Blueprint $table) {
             $table->id();
             $table->string('nomeRua');
-            $table->string('primeiro dia');
-            $table->string('primeiro horario');
-            $table->string('segundo dia');
-            $table->string('segundo horario');
-            $table->string('terceiro dia');
-            $table->string('terceiro horario');
+            $table->string('primeiro_dia');
+            $table->string('primeiro_horario');
+            $table->string('segundo_dia');
+            $table->string('segundo_horario');
+            $table->string('terceiro_dia');
+            $table->string('terceiro_horario');
             $table->timestamps();
         });
     }

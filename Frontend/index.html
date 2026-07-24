@@ -77,7 +77,7 @@
                   return response.json();
                 })
                 .then((data) => {
-                  resultadoDiv.innerHTML = `Rua: ${data.nomeRua}<br>Horaio: ${data.primeiro_dia}`;
+                  resultadoDiv.innerHTML = `Rua: ${data.nomeRua}<br>Primeiro dia: ${data.primeiro_dia} ${data.primeiro_horario}<br>Segundo dia: ${data.segundo_dia} ${data.segundo_horario}<br>terceiro dia: ${data.terceiro_dia} ${data.terceiro_horario}`;
                 })
                 .catch((error) => {
                   resultadoDiv.innerHTML = error.message;

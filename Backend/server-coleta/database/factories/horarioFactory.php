@@ -18,12 +18,12 @@ class horarioFactory extends Factory
     {
         return [
         'nomeRua' => fake()->streetName(),
-        'primeiro dia' => now()->locale('pt_BR')->dayName,
-        'primeiro horario' => fake()->time(),
-        'segundo dia' => now()->locale('pt_BR')->dayName,
-        'segundo horario' => fake()->time(),
-        'terceiro dia' => now()->locale('pt_BR')->dayName,
-        'terceiro horario' => fake()->time(),
+        'primeiro_dia' => fake()->dayOfWeek(),
+        'primeiro_horario' => fake()->time(),
+        'segundo_dia' => fake()->dayOfWeek(),
+        'segundo_horario' => fake()->time(),
+        'terceiro_dia' => fake()->dayOfWeek(),
+        'terceiro_horario' => fake()->time(),
         ];
     }
 }
