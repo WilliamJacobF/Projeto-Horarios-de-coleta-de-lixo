@@ -12,7 +12,7 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
-            'password' => [required],
+            'password' => ['required'],
         ]);
 
         if (! Auth::attempt($credentials)) {
@@ -21,7 +21,7 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $request->session()->regerate();
+        $request->session()->regenerate();
 
         return response()->json([
             'message' => 'Login realizado.'

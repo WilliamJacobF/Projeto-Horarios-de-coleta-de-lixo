@@ -9,6 +9,8 @@ use App\Http\Controllers\AuthController;
 Route::get('/ruas', [ApiController::class, 'index']);
 Route::get('/ruas/buscar/{nome}', [ApiController::class, 'buscarPorNome']);
 
+Route::post('/login', [AuthController::class, 'login']);
+
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/user', function (Request $request) {

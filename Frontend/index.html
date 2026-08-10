@@ -59,6 +59,31 @@
         <div class="resultado" id="resultado"></div>
 
         <script>
+          await fetch("http://localhost:8000/sanctum/csrf-cookie", {
+            credentials: "include"
+          });
+
+          await fetch("http://localhost:8000/login", {
+            method: "POST",
+            creadentials: "include",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              email,
+              password
+            })
+            });
+
+            const resposta = await fetch(
+            "http://localhost:8000/api/horarios",
+            {
+               credentials: "include"
+            }
+            );
+
+            const horarios = await resposta.json();
+
           document
             .getElementById("formBusca")
             .addEventListener("submit", function (e) {
